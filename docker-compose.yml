@@ -1,0 +1,24 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://username:password@db/dbname  # Замените на свои данные
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: username  # Замените на свои данные
+      POSTGRES_PASSWORD: password  # Замените на свои данные
+      POSTGRES_DB: dbname  # Замените на свои данные
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
