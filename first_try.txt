@@ -165,3 +165,5 @@
 #     except Exception as e:
 #         db.rollback()
 # #DONE!!
+docker-compose build --no-cache
+docker-compose up
